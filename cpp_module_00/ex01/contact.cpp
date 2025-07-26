@@ -14,45 +14,70 @@ void Contact::displayContact() const
 	std::cout << "Known as:     " << this->nickName << std::endl;
 	std::cout << "Darkest secret, be ready... :     " << this->darkestSecret << std::endl;
 	std::cout << "Phone number:     " << this->phoneNumber << std::endl;
-	std::cout << "-----------" << std::endl;
+	std::cout << "-------------" << std::endl;
 }
 
-std::string Contact::getFirstName() const {
-    return firstName;
+void PhoneBook::addContact()
+{
+	std::string input;
+
+	std::cout << "Enter first Name:     ";
+	std::getline(std::cin, input);
+	contacts[currentIndex].setFirstName(input);
+
+	std::cout << "Enter last Name:     ";
+        std::getline(std::cin, input);
+        contacts[currentIndex].setLastName(input);
+
+	std::cout << "Enter nickname:     ";
+        std::getline(std::cin, input);
+        contacts[currentIndex].setNickName(input);
+
+	std::cout << "Enter the darkest secret:     ";
+        std::getline(std::cin, input);
+        contacts[currentIndex].setSecret(input);
+
+	std::cout << "Enter the phone number:     ";
+        std::getline(std::cin, input);
+        contacts[currentIndex].setPhoneNumber(input);
+
+	currentIndex = (currentIndex + 1) % 8;
+	if (contactCount < 8)
+		contactCount++;
 }
 
-std::string Contact::getLastName() const {
-    return lastName;
+void PhoneBook::displayContacts()
+{
+	int i;
+
+	i = 0;
+	if (contactCount == 0)
+	{
+		std::cout << "No contact available." << std::endl;
+		return;
+	}
+	std::cout << std::setw(10) << "Index" << "|";
+	std::cout << std::setw(10) << "First name" << "|";
+	std::cout << std::setw(10) << "Last name" << "|";
+	std::cout << std::setw(10) << "Nickname" << std::endl;
+	while (i < contactCount)
+	{
+		std::cout << std::setw(10) << i << "|";
+		std::cout << std::setw(10) << contacts[i].getFirstName() << "|";
+		std::cout << std::setw(10) << contacts[i].getLastName() << "|";
+		std::cout << std::setw(10) << contacts[i].getNickName() << std::endl;
+		i++;
+	}
 }
 
-std::string Contact::getNickName() const {
-    return nickName;
+
+void PhoneBook::searchContact()
+{
+	displayContacts();
+	int index;
+	std::cout << "Enter index:     ";
+	std::cin >> index;
+	if (index >= 0 && index < contactCount)
+		contacts[index].displayContact();
 }
 
-std::string Contact::getSecret() const {
-    return darkestSecret;
-}
-
-std::string Contact::getPhoneNumber() const {
-    return phoneNumber;
-}
-
-void Contact::setFirstName(const std::string& name) {
-    firstName = name;
-}
-
-void Contact::setLastName(const std::string& last) {
-    lastName = last;
-}
-
-void Contact::setNickName(const std::string& nick) {
-    nickName = nick;
-}
-
-void Contact::setSecret(const std::string& secret) {
-    darkestSecret = secret;
-}
-
-void Contact::setPhoneNumber(const std::string& number) {
-    phoneNumber = number;
-}

@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
+
 class Contact
 {
 	private:
@@ -13,17 +15,17 @@ class Contact
 		std::string phoneNumber; // utilisation de std::string car dans certain cas, les numeros seront accompagne de - ou ()
 	public:
 		// getters
-		std::string getFirstName() const;
-		std::string getLastName() const;
-		std::string getNickName() const;
-		std::string getSecret() const;
-		std::string getPhoneNumber() const;
+		std::string getFirstName() const { return firstName; }
+		std::string getLastName() const { return lastName; }
+		std::string getNickName() const {return nickName; }
+		std::string getSecret() const {return darkestSecret; }
+		std::string getPhoneNumber() const { return phoneNumber; }
 		// setters
-		void setFirstName(const std::string& name);
-		void setLastName(const std::string& last);
-		void setNickName(const std::string& nick);
-		void setSecret(const std::string& secret);
-		void setPhoneNumber(const std::string& number);
+		void setFirstName(const std::string& name) { firstName = name; }
+		void setLastName(const std::string& last) { lastName = last; }
+		void setNickName(const std::string& nick) { nickName = nick; }
+		void setSecret(const std::string& secret) {darkestSecret = secret; }
+		void setPhoneNumber(const std::string& number) { phoneNumber = number; }
 		// constructeur
 		Contact(const std::string& name = "", 
         		const std::string& last = "", 
@@ -39,8 +41,24 @@ class Contact
 		~Contact();
 		// display
 		void displayContact() const;
+};
 
+class PhoneBook
+{
+	private:
+		Contact contacts[8];
+		int currentIndex;
+		int contactCount;
+	public:
+		void addContact();
+		void searchContact();
+		void displayContacts();
 
+		PhoneBook() : contactCount(0),
+				currentIndex(0)
+		{
+			std::cout << "PhoneBook created !" << std::endl;
+		}
 
 };
 
