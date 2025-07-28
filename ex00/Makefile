@@ -1,6 +1,6 @@
 EXEC = Megaphone
 
-SRC = megaphone.cpp
+SRC = ./src/megaphone.cpp
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror
