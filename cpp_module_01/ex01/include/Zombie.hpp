@@ -8,11 +8,11 @@ class Zombie
 {
     private:
         std::string zombie_name;
-        static int zombie_wanted;
+        static int index;
     
     public:
         Zombie(const std::string& name) : zombie_name(name);
-        
+        void announce();
 
 };
 
