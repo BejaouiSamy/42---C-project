@@ -11,9 +11,12 @@ class Zombie
         static int index;
     
     public:
-        Zombie(const std::string& name) : zombie_name(name);
-        void announce();
+        Zombie(const std::string& name = "");
+        void announce() const;
+        ~Zombie();
 
 };
+
+Zombie* zombieHorde(int N, std::string name);
 
 #endif
