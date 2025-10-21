@@ -2,6 +2,17 @@
 
 int main(void)
 {
-    Zombie *z = zombieHorde(5, "ghoul");
-    z->announce();
+    int N;
+    int i;
+
+    i = 0;
+    N = 5;
+    Zombie* horde = zombieHorde(N, "ghoul");
+    while (i < N)
+    {
+        horde[i].announce();
+        i++;
+    }
+    delete[] horde;
+    return (0);
 }

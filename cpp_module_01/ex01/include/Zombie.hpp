@@ -8,12 +8,12 @@ class Zombie
 {
     private:
         std::string zombie_name;
-        static int index;
     
     public:
-        Zombie(const std::string& name = "");
-        void announce() const;
+        Zombie();
         ~Zombie();
+        void announce() const;
+        void setName(const std::string& name);
 
 };
 
