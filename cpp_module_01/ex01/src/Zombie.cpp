@@ -10,6 +10,7 @@ Zombie::~Zombie()
     std::cout << "Zombie " << zombie_name << " is really DEAD !" << std::endl;
 }
 
+//std::string& permet de passer par reference est eviter les copies de name
 void Zombie::setName(const std::string& name)
 {
     zombie_name = name;
