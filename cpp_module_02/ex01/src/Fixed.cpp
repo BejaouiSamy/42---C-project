@@ -12,6 +12,8 @@ Fixed::Fixed(int const n)
     std::cout << "int constructor called" << std::endl;
     _value = n << _fractionalBits;
 }
+// on converti un int pour uniformiser en interne.
+// par ex 5 deviendra 5.0 (comparaison plus simple et calcul plus simple)
 
 // Constructor depuis float
 Fixed::Fixed(float const f)
