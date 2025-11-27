@@ -7,11 +7,12 @@ ClapTrap::ClapTrap(void)
 
 ClapTrap::ClapTrap(const std::string& name) : _ClapTrap_name(name)
 {
-    std::cout << "HEY ! I'm a service robot called " << name << " but my friend call me ClapTrap.. Or they should." << std::endl;
-    _ClapTrap_name = "";
+    _ClapTrap_name = name;
     _health = 10;
+    max_health = _health;
     _stamina = 10;
     _attack = 0;
+    std::cout << "HEY ! I'm a service robot called " << name << " but my friend call me handsome.. Or they should." << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const& other)
@@ -26,6 +27,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other)
     if (this == &other)
         return (*this);
     _ClapTrap_name = other._ClapTrap_name;
+    max_health = other.max_health;
     _health = other._health;
     _stamina = other._stamina;
     _attack = other._attack;
@@ -34,7 +36,6 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other)
 
 ClapTrap::~ClapTrap(void)
 {
-    std::cout << " " << std::endl;
     std::cout << "ClapTrap destructor called." << std::endl;
 }
 
@@ -60,7 +61,10 @@ void ClapTrap::attack(const std::string& target, int damage)
 
 void ClapTrap::takeDamage(unsigned int damage)
 {
-    if (_health <= 0)
+
+    if (damage >= _health)
+        _health = 0;
+    if (_health == 0)
     {
         std::cout << _ClapTrap_name << " is already DEAD.. :'(" << std::endl;
         return;
@@ -89,7 +93,10 @@ void ClapTrap::beRepaired(unsigned int reparation)
 
 void ClapTrap::status()
 {
-    std::cout << " ... " << std::endl;
+
+    float percent;
+
+    percent = (float)_health / (float)max_health * 100.0f;
     if (_health <= 0)
     {
         std::cout << _ClapTrap_name << " is dead... a minute of silence please." << std::endl;
@@ -97,11 +104,11 @@ void ClapTrap::status()
     }
     std::cout << "> " << _ClapTrap_name << " lp : " << _health << std::endl;
     std::cout << "> " << _ClapTrap_name << " stamina : " << _stamina << std::endl;
-    if (_health % 2 == 0 && _health > 5)
-        std::cout << "I feel extra ! I think.." << std::endl;
-    else if (_health % 2 != 0 && _health > 5)
-        std::cout << "I feel good, I feel ALIVE AHAHAH >:)" << std::endl;
-    else if  (_health <= 5)
+    if (percent < 33.0f)
         std::cout << "I see a light.., it's white, it bright.. x_x" << std::endl;
+    else if (percent < 66.0f)
+        std::cout << "I feel extra ! I think.." << std::endl;
+    else
+        std::cout << "I feel good, I feel ALIVE AHAHAH >:)" << std::endl;
     std::cout << " ... " << std::endl;
 }

@@ -7,10 +7,13 @@ ScavTrap::ScavTrap(ScavTrap const& other) : ClapTrap(other)
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
-    std::cout << "Halt, moon citizen, I'm " << name << ". Here to defend, here to kill." << std::endl;
+    _scav_name = name;
     _health = 100;
+    max_health = _health;
     _stamina = 50;
     _attack = 20;
+    std::cout << "Halt, moon citizen, I'm " << name << ". Here to defend, here to kill." << std::endl;
+
 }
 
 ScavTrap::ScavTrap() : ClapTrap()
@@ -35,5 +38,5 @@ ScavTrap::~ScavTrap(void)
 
 void ScavTrap::guardGate(void)
 {
-    std::cout << "I, the magnificient " << _ClapTrap_name << ", switch to defend mode !" << std::endl;
+    std::cout << "I, the magnificient " << _scav_name << ", switch to defend mode !" << std::endl;
 }

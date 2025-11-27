@@ -4,15 +4,30 @@
 int main(void)
 {
     ClapTrap claptrap("bob");
-    ScavTrap scavetrap("sc4v");
+    ClapTrap c("alex");
+    ClapTrap d;
+    ScavTrap scavtrap("sc4v");
+    ScavTrap a("amir");
+    ScavTrap b;
+    b = a;
+    d = c;
 
     claptrap.status();
-    scavetrap.status();
+    scavtrap.status();
+    a.status();
+    b.status();
+    c.status();
+    d.status();
 
     claptrap.attack("Rider", 2);
-    scavetrap.attack("rider2", 5);
-    scavetrap.guardGate();
+    scavtrap.attack("rider2", 5);
+    a.takeDamage(75);
+    claptrap.takeDamage(5);
+    scavtrap.guardGate();
+    d.takeDamage(50);
     
     claptrap.status();
-    scavetrap.status();
+    scavtrap.status();
+    a.status();
+    d.status();
 }

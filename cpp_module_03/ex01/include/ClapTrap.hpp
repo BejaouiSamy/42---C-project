@@ -7,12 +7,13 @@
 class ClapTrap
 {
     protected: // prive mais laisse accees aux classes enfants
+        unsigned int max_health;
         std::string _ClapTrap_name;
         unsigned int _health;
         unsigned int _stamina ;
         unsigned int _attack;
     public:
-        ClapTrap();
+        ClapTrap(void);
         ClapTrap(const std::string& name);
         ~ClapTrap(void);
         ClapTrap(const ClapTrap& other); // copie
