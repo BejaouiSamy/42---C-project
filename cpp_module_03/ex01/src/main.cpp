@@ -19,8 +19,8 @@ int main(void)
     c.status();
     d.status();
 
-    claptrap.attack("Rider", 2);
-    scavtrap.attack("rider2", 5);
+    claptrap.attack("Rider");
+    scavtrap.attack("rider2");
     a.takeDamage(75);
     claptrap.takeDamage(5);
     scavtrap.guardGate();

@@ -1,4 +1,4 @@
-EXEC = sc4vtrap
+EXEC = FragTrap
 
 SRC = ./src/main.cpp ./src/ClapTrap.cpp ./src/ScavTrap.cpp ./src/FragTrap.cpp
 HEADER = ./include/ClapTrap.hpp ./include/ScavTrap.hpp ./include/FragTrap.hpp

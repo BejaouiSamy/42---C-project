@@ -18,7 +18,7 @@ class ClapTrap
         ~ClapTrap(void);
         ClapTrap(const ClapTrap& other); // copie
         ClapTrap& operator=(ClapTrap const& other); // op affectation
-        void attack(const std::string& target, int damage);
+        void attack(const std::string& target);
         void takeDamage(unsigned int damage);
         void beRepaired(unsigned int reparation);
         void status(void);
