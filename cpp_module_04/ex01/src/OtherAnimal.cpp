@@ -46,6 +46,7 @@ Dog::~Dog(void)
 {
     std::cout << "Dog destructor called." << std::endl;
     delete brain;
+    std::cout << "Brain supprimé" << std::endl;
 }
 
 void Dog::makeSound(void) const
@@ -59,13 +60,15 @@ Dog& Dog::operator=(Dog const& other)
     if (this == &other)
         return (*this);
     Animal::operator=(other);
+    delete this->brain;
+    this->brain = new Brain(*other.brain);
     return (*this);
 }
 
 Dog::Dog(Dog const& other) : Animal()
 {
     std::cout << "Copy called." << std::endl;
-    *this = other;
+    this->brain = new Brain(*other.brain);
 }
 
 // ---Wrong animal
