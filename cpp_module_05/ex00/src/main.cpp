@@ -1,11 +1,13 @@
-#include "../include/bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
 
 int main() {
     try 
     {
         Bureaucrat b1("Alice", 1);
         std::cout << b1 << std::endl;
-        //b1.incrementGrade();
+        std::cout << std::endl;
+        //b1.incrementGrade(); --
+
     } 
     catch (const std::exception& e) 
     {
@@ -16,7 +18,8 @@ int main() {
     {
         Bureaucrat b2("Bob", 150);
         std::cout << b2 << std::endl;
-        //b2.decrementGrade();
+        std::cout << std::endl;
+        //b2.decrementGrade(); ++
     } 
     catch (const std::exception& e) // correct. sans le & on perd le polymorphisme et on ne peut pas attraper les exceptions dérivées
     {
@@ -25,8 +28,10 @@ int main() {
 
     try 
     {
+        std::cout << "Charlie : " << std::endl;
         Bureaucrat b3("Charlie", 0);
         std::cout << b3 << std::endl;
+        std::cout << std::endl;
     } 
     catch (const std::exception& e) 
     {
@@ -34,8 +39,11 @@ int main() {
     }
     try 
     {
+        std::cout << "Dave : " << std::endl;
         Bureaucrat b4("Dave", 151);
         std::cout << b4 << std::endl;
+        std::cout << std::endl;
+
     } 
     catch (const std::exception& e) 
     {
@@ -47,6 +55,8 @@ int main() {
     {
         Bureaucrat b6 = b5;
         std::cout << b6 << std::endl;
+        std::cout << std::endl;
+
     }
     catch (const std::exception& e)
     {

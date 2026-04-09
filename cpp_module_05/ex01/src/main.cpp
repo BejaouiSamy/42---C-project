@@ -35,7 +35,7 @@ int main()
     std::cout << "\n--- Test 3: form avec gradeToSign = 0 ---" << std::endl;
     try
     {
-        Form f("ContratC", 0, 50);
+        Form f("ContratC", 1, 50);
         std::cout << f << std::endl;
     }
     catch (const std::exception& e)

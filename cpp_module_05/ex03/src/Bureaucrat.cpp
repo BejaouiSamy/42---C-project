@@ -1,4 +1,5 @@
 #include "../include/Bureaucrat.hpp"
+#include "../include/AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade)
 {
@@ -48,6 +49,32 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const& other)
         grade = other.grade; // const donc pas de copie du name 
     }
     return *this;
+}
+
+void Bureaucrat::signForm(AForm& form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.getName() << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm const& form) 
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << name << " executed " << form.getName() << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
