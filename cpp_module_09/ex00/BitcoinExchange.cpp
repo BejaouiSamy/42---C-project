@@ -2,6 +2,13 @@
 #include <cstdlib>
 #include <cctype>
 
+/* 
+on prend le fichier au format std::string qu'on convertie en const char a cause de ifstream
+ensuite on creer std::string line au format std::string car ligne = string
+a la fin, on converti les string en float pour avoir les valeurs
+puis on donne a _file, a chaque date les prix.
+*/
+
 BitcoinEx::BitcoinEx(std::string fileName)
 {
     std::ifstream file(fileName.c_str());
@@ -75,7 +82,7 @@ void BitcoinEx::takeFile(std::string fileName)
             std::cerr << "Error: bad input => " << date << std::endl;
             continue;
         }
-        std::map<std::string, float>::iterator it = _file.lower_bound(date);
+        std::map<std::string, float>::iterator it = _file.lower_bound(date); // cherche la date la plus proche sinon --it
         if(it == _file.end() || it->first != date)
         {
             if(it == _file.begin())
